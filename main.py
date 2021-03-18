@@ -74,6 +74,7 @@ def main():
     base_path = os.path.abspath("./data")
 
     current_path = base_path
+    prev_selected = None
 
     while True:
         # get newest value from analog input
@@ -88,19 +89,29 @@ def main():
         angle = point2angle(x, y)
 
         # which options are possible
-        options = get_options(current_path)
-
-        # get which option is currently selected
-        selected = select_path(x, y, angle, angle_per_option)
+        options = get_options(current_path) # list of all files/ folders/ possibilities
 
         # get angle per option
         angle_per_option = get_option_angle(options)
 
-        current_path = os.path.abspath(f"{current_path}/..")
+        # get which option is currently selected
+        selected = get_selected(x, y, angle, angle_per_option)
 
-        print(f"Obtion = {option}")
+        if selected == None:
+            if prev_selected != None:
+                # change to selected path
+                current_path = os.path.abspath(f"{current_path}/{options[selected]}")
+        else:
+            print(selected, options)
 
-        time.sleep(.1)
+
+        print(f"current_path = {current_path}")
+
+        prev_selected = selected
+
+        time.sleep(1)
+
+        os.system('clear')
 
 if __name__ == "__main__":
     main()
