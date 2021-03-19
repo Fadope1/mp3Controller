@@ -7,6 +7,11 @@ import busio
 import time
 import os
 
+import pyttsx3
+engine = pyttsx3.init()
+engine.setProperty('voice', "german")
+engine.setProperty('rate', 100)
+
 NORM_BUFFER = 1_000
 X_BUFFER = 0.008
 Y_BUFFER = 0.02
@@ -64,11 +69,17 @@ def get_options(path):
     # check the current dir how many options you have to choose
     return os.listdir(path) + [".."]
 
+def text2speech(txt): # this will convert text to speech and play it
+    engine.say(txt)
+    engine.runAndWait()
+
 def open_file(path):
     # this will open file at path if .txt else return None
     # when opened it will read the content (text2speech)
     with open(path) as file:
-        print(file.read())
+        text = file.read()
+
+        text2speech(text)
 
     exit()
 
@@ -116,6 +127,7 @@ def main():
         print(selected, options, end="")
 
         if selected == None:
+            engine.stop() # is this needed?
             if prev_selected != None:
                 # change to selected path
                 path = os.path.abspath(f"{current_path}/{options[prev_selected]}")
@@ -123,9 +135,9 @@ def main():
                      open_file(path)
                 else:
                     current_path = path
-                # pass
         else:
-            print("", options[selected], end="")
+            # print("", options[selected], end="")
+            text2speech(str(options[selected]))
 
         print("")
 
