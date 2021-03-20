@@ -81,8 +81,6 @@ def open_file(path):
 
         text2speech(text)
 
-    exit()
-
 def main():
     spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
     cs = digitalio.DigitalInOut(board.D22)
@@ -136,8 +134,14 @@ def main():
                 else:
                     current_path = path
         else:
-            # print("", options[selected], end="")
-            text2speech(str(options[selected]))
+            current_select = str(options[selected])
+
+            if ".txt" in current_select:
+                current_select = current_select[:len(current_select)-4] # cut away the .txt
+            elif current_select == "..":
+                current_select = "Zurück"
+
+            text2speech(current_select)
 
         print("")
 
