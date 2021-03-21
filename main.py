@@ -4,7 +4,6 @@ class core:
 
     def __init__(self):
         from loop_system import loop
-        import importlib.util
         import os
 
         from speaker import speaker
@@ -26,12 +25,16 @@ class core:
             self.speaker.speak_file(path)
         elif selected.endswith(".py"):
             try:
+                import importlib.util
+
                 spec = importlib.util.spec_from_file_location(selected[:len(selected)-3], path)
 
-                class_ = importlib.util.module_from_spec(spec)
-                spec.loader.exec_module(foo)
+                pyfile = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(pyfile)
 
-                instance = class_.calc()
+                import pyclbr
+
+                instance = getattr(pyfile, list(pyclbr.readmodule(pyfile.__name__).keys())[0])()
                 instance.start_sub_loop(instance.main)
             except Exception:
                 print("Something went wrong. Fallback to core.")
