@@ -10,11 +10,11 @@ class loop:
         from piController import joystick
         self.controller = joystick()
 
-    def __call__(self, other, run_func):
+    def __call__(self, run_func):
         prev_selected = None
 
         while True:
-            options = self.func(other)
+            options = self.func(self, run_func)
             selected = self.controller.get_selected(options)
 
             option = options[selected]
