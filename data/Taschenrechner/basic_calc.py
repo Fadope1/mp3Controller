@@ -2,5 +2,5 @@ class calc:
     def __init__(self):
         pass
 
-    def run(self):
+    def start_sub_loop(self):
         print("Running the basic calculator")
