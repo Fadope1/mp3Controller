@@ -19,6 +19,6 @@ class joystick:
     def __calc_angle_per_option():
         pass
 
-    def get_selected(options):
+    def get_selected(options:list)->int:
         # return selected options, else return None
         pass

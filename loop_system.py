@@ -17,10 +17,14 @@ class loop:
             options = self.func(other)
             selected = self.controller.get_selected(options)
 
+            option = options[selected]
+
             if selected == None and prev_selected != None:
-                run_func(other, selected)
+                run_func(option)
             else:
-                self.speaker.speak(options[selected])
+                if option.endswith(".txt"):
+                    option = option[:len(option)-4]
+                self.speaker.speak(str(option))
 
             prev_selected = selected
 

@@ -4,8 +4,10 @@ class core:
 
     def __init__(self):
         from loop_system import loop
-        from speaker import speaker
         import os
+
+        from speaker import speaker
+        self.speaker = speaker(rate=150)
 
         self.base_path = os.path.abspath("./data")
 
@@ -16,8 +18,13 @@ class core:
         # list of options currently available
         return os.listdir(c_path) + [".."]
 
-    def change_dir(self, selected):
-        print("changed dir")
+    def main(self, selected):
+        path = os.path.abspath(f"{self.current_path}/{selected}")
+
+        if selected.endswith(".txt"):
+            self.speaker.speak_file(path)
+        else:
+            self.current_path = path
 
     @loop
     def start_main_loop(self, func):
@@ -25,4 +32,4 @@ class core:
 
 if __name__ == "__main__":
     system = core()
-    system.start_main_loop(system.select_option)
+    system.start_main_loop(system.main)
