@@ -16,6 +16,18 @@ NORM_BUFFER = 1_000
 X_BUFFER = 0.008
 Y_BUFFER = 0.02
 
+# TODO:
+'''
+- Add shutdown/ restart option
+- autostart python script
+- autoconnect to headset
+- solder the pi together
+- no escaping from base path
+- calculator
+- rewrite to class
+- zsmfassungen schreiben
+'''
+
 def point2angle(px, py):
     # this will convert a point (x, y) (-1 to 1) into an angle from y axis
     angle = None
@@ -149,7 +161,7 @@ def main():
 
         prev_selected = selected
 
-        time.sleep(.25)
+        time.sleep(.3) # play around with this option
 
         os.system('clear')
 
