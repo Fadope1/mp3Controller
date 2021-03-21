@@ -4,6 +4,7 @@ class core:
 
     def __init__(self):
         from loop_system import loop
+        import importlib.util
         import os
 
         from speaker import speaker
@@ -23,6 +24,18 @@ class core:
 
         if selected.endswith(".txt"):
             self.speaker.speak_file(path)
+        elif selected.endswith(".py"):
+            try:
+                spec = importlib.util.spec_from_file_location(selected[:len(selected)-3], path)
+
+                class_ = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(foo)
+
+                instance = class_.calc()
+                instance.start_sub_loop(instance.main)
+            except Exception:
+                print("Something went wrong. Fallback to core.")
+                self.speaker.say("Etwas ist schief gelaufen. Gehe zurück zum Core System.")
         else:
             self.current_path = path
 
