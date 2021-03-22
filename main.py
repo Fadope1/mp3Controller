@@ -42,7 +42,7 @@ class core:
 
                 import pyclbr
 
-                file_cls = pyclbr.readmodule(pyfile.__name__, path=path).keys()
+                file_cls = pyclbr.readmodule(pyfile.__name__, path=self.current_path).keys()
                 print(file_cls)
                 cls = list(file_cls)[0]
                 print(cls)
