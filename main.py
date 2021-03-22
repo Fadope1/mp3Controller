@@ -1,3 +1,4 @@
+import traceback
 import os
 
 # the core system
@@ -40,7 +41,8 @@ class core:
                 instance.start_sub_loop()
             except Exception:
                 print("Something went wrong. Fallback to core.")
-                self.speaker.say("Etwas ist schief gelaufen. Gehe zurück zum Core System.")
+                traceback.print_exception()
+                self.speaker.speak("Etwas ist schief gelaufen. Gehe zurück zum Core System.")
         else:
             self.current_path = path
 
