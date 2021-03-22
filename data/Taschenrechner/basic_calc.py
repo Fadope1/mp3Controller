@@ -1,7 +1,7 @@
+from loop_system import loop
+
 class calc:
     def __init__(self):
-        from loop_system import loop
-
         from speaker import speaker
         self.speaker = speaker()
 

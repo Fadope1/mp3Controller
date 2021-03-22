@@ -17,8 +17,8 @@ class joystick:
         self.mcp = MCP.MCP3008(self.spi, self.cs)
 
         # TODO: check which pins are used, instead of hard coding it
-        self.x_channel = AnalogIn(mcp, MCP.P6)
-        self.y_channel = AnalogIn(mcp, MCP.P7)
+        self.x_channel = AnalogIn(self.mcp, MCP.P6)
+        self.y_channel = AnalogIn(self.mcp, MCP.P7)
 
     def __normalize(self, p):
         # this will normalize the analog input into range -1 to 1

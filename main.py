@@ -1,9 +1,10 @@
+from loop_system import loop
+
 # the core system
 class core:
     # TODO: Add custom exceptions
 
     def __init__(self):
-        from loop_system import loop
         import os
 
         from speaker import speaker
@@ -14,7 +15,7 @@ class core:
         self.current_path = self.base_path
 
     @staticmethod
-    def get_options(c_path):
+ def get_options(c_path:path) -> list:
         # list of options currently available
         return os.listdir(c_path) + [".."]
 
