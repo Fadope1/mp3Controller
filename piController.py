@@ -1,3 +1,5 @@
+from math import atan, degrees
+
 # this class is for getting the input/ angle etc. from the joystick
 class joystick:
     NORM_BUFFER = 1_000
@@ -7,7 +9,6 @@ class joystick:
     def __init__(self):
         from adafruit_mcp3xxx.analog_in import AnalogIn
         import adafruit_mcp3xxx.mcp3008 as MCP
-        from math import atan, degrees
         import digitalio
         import board
         import busio

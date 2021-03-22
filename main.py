@@ -1,10 +1,10 @@
+import os
+
 # the core system
 class core:
     # TODO: Add custom exceptions
 
     def __init__(self):
-        import os
-
         from speaker import speaker
         self.speaker = speaker(rate=150)
 
@@ -45,17 +45,22 @@ class core:
             self.current_path = path
 
     def start_main_loop(self):
+        import time
+
         prev_selected = None
 
         while True:
             options = self.get_options(self.current_path)
             selected = self.joystick.get_selected(options)
 
-            option = options[selected]
+            print(options)
 
             if selected == None and prev_selected != None:
+                option = options[prev_selected]
                 self.main(option)
-            else:
+            elif selected != None:
+                option = options[selected]
+                print(option)
                 if option.endswith(".txt"):
                     option = option[:len(option)-4]
                 self.speaker.speak(str(option))
@@ -66,4 +71,4 @@ class core:
 
 if __name__ == "__main__":
     system = core()
-    system.start_main_loop(system, system.main)
+    system.start_main_loop()
