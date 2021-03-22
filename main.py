@@ -38,10 +38,12 @@ class core:
                 pyfile = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(pyfile)
 
+                print(pyfile, pyfile.__name__)
+
                 import pyclbr
 
-                cls = list(pyclbr.readmodule(pyfile.__name__).keys())[0]
-                print(pyfile, pyfile.__name__, cls)
+                file_cls = pyclbr.readmodule(pyfile.__name__).keys()
+                cls = list(file_cls)[0]
                 instance = getattr(pyfile, cls)()
                 instance.start_sub_loop()
             except Exception as e:
