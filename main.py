@@ -1,5 +1,3 @@
-from loop_system import loop
-
 # the core system
 class core:
     # TODO: Add custom exceptions
@@ -9,6 +7,9 @@ class core:
 
         from speaker import speaker
         self.speaker = speaker(rate=150)
+
+        from piController import joystick
+        self.joystick = joystick()
 
         self.base_path = os.path.abspath("./data")
 
@@ -43,10 +44,26 @@ class core:
         else:
             self.current_path = path
 
-    @loop
-    def start_main_loop(self, func):
-        return self.get_options(self.current_path)
+    def start_main_loop(self):
+        prev_selected = None
+
+        while True:
+            options = self.get_options(self.current_path)
+            selected = self.joystick.get_selected(options)
+
+            option = options[selected]
+
+            if selected == None and prev_selected != None:
+                self.main(option)
+            else:
+                if option.endswith(".txt"):
+                    option = option[:len(option)-4]
+                self.speaker.speak(str(option))
+
+            prev_selected = selected
+
+            time.sleep(.3)
 
 if __name__ == "__main__":
     system = core()
-    system.start_main_loop(system.main)
+    system.start_main_loop(system, system.main)

@@ -1,4 +1,4 @@
-from dec import testdec
+from dec import wrapper
 
 class core:
     def __init__(self):
@@ -7,10 +7,15 @@ class core:
     def main(self, value):
         print(self.name, value)
 
-    @testdec
-    def run(self, func):
+    @staticmethod
+    def random_number(x):
         import random
+        print(x)
         return random.random()
+
+    @wrapper
+    def random_number(self):
+        return self, self.random_number(self.name)
 
 s = core()
 s.run(s.main)
