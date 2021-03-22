@@ -37,7 +37,7 @@ class core:
                 import pyclbr
 
                 instance = getattr(pyfile, list(pyclbr.readmodule(pyfile.__name__).keys())[0])()
-                instance.start_sub_loop(instance.main)
+                instance.start_sub_loop()
             except Exception:
                 print("Something went wrong. Fallback to core.")
                 self.speaker.say("Etwas ist schief gelaufen. Gehe zurück zum Core System.")

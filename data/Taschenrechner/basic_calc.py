@@ -1,9 +1,10 @@
-from loop_system import loop
-
 class calc:
     def __init__(self):
         from speaker import speaker
         self.speaker = speaker()
+
+        from piController import joystick
+        self.joystick = joystick()
 
     @staticmethod
     def get_options():
@@ -13,6 +14,9 @@ class calc:
     def main(self, selected):
         pass
 
-    @loop
-    def start_sub_loop(self, func):
-        return self.get_options()
+    def start_sub_loop(self):
+        import time
+
+        while True:
+            print("NOW IN CALC")
+            time.sleep(.5)
