@@ -42,8 +42,10 @@ class core:
 
                 import pyclbr
 
-                file_cls = pyclbr.readmodule(pyfile.__name__).keys()
+                file_cls = pyclbr.readmodule(pyfile.__name__, path=path).keys()
+                print(file_cls)
                 cls = list(file_cls)[0]
+                print(cls)
                 instance = getattr(pyfile, cls)()
                 instance.start_sub_loop()
             except Exception as e:
