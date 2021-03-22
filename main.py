@@ -1,4 +1,5 @@
 import traceback
+import sys
 import os
 
 # the core system
@@ -39,9 +40,9 @@ class core:
 
                 instance = getattr(pyfile, list(pyclbr.readmodule(pyfile.__name__).keys())[0])()
                 instance.start_sub_loop()
-            except Exception:
-                print("Something went wrong. Fallback to core.")
-                traceback.print_exception()
+            except Exception as e:
+                print(f"Something went wrong. Fallback to core. Exc: {e}")
+                traceback.print_exception(*sys.exc_info())
                 self.speaker.speak("Etwas ist schief gelaufen. Gehe zurück zum Core System.")
         else:
             self.current_path = path
