@@ -15,7 +15,7 @@ class core:
         self.current_path = self.base_path
 
     @staticmethod
- def get_options(c_path:path) -> list:
+ def get_options(c_path:"path") -> "list":
         # list of options currently available
         return os.listdir(c_path) + [".."]
 
