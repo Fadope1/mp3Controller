@@ -25,6 +25,8 @@ class core:
     def main(self, selected):
         path = os.path.abspath(f"{self.current_path}/{selected}")
 
+        print(path)
+
         if selected.endswith(".txt"):
             self.speaker.speak_file(path)
         elif selected.endswith(".py"):
@@ -38,7 +40,9 @@ class core:
 
                 import pyclbr
 
-                instance = getattr(pyfile, list(pyclbr.readmodule(pyfile.__name__).keys())[0])()
+                cls = list(pyclbr.readmodule(pyfile.__name__).keys())[0]
+                print(pyfile, pyfile.__name__, cls)
+                instance = getattr(pyfile, cls)()
                 instance.start_sub_loop()
             except Exception as e:
                 print(f"Something went wrong. Fallback to core. Exc: {e}")
