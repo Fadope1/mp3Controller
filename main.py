@@ -2,10 +2,16 @@ import traceback
 import sys
 import os
 
+# TODO:
+"""
+- solder the pi0
+- loop as decorator?
+- logging system
+- system loop for system interaction, e.g. shutdown, volume up etc.
+"""
+
 # the core system
 class core:
-    # TODO: Add custom exceptions
-
     def __init__(self):
         from speaker import speaker
         self.speaker = speaker(rate=150)
@@ -25,8 +31,6 @@ class core:
     def main(self, selected):
         path = os.path.abspath(f"{self.current_path}/{selected}")
 
-        print(path)
-
         if selected.endswith(".txt"):
             self.speaker.speak_file(path)
         elif selected.endswith(".py"):
@@ -38,19 +42,16 @@ class core:
                 pyfile = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(pyfile)
 
-                print(pyfile, pyfile.__name__)
-
                 import pyclbr
 
-                file_cls = pyclbr.readmodule(pyfile.__name__, path=self.current_path).keys()
-                print(file_cls)
+                sys.path.append(self.current_path)
+                file_cls = pyclbr.readmodule(pyfile.__name__).keys()
                 cls = list(file_cls)[0]
-                print(cls)
-                instance = getattr(pyfile, cls)()
+                instance = getattr(pyfile, cls)(joystick=self.joystick, speaker=self.speaker)
                 instance.start_sub_loop()
             except Exception as e:
                 print(f"Something went wrong. Fallback to core. Exc: {e}")
-                traceback.print_exception(*sys.exc_info())
+                traceback.print_exception(*sys.exc_info()) # maybe save the exc to a file?
                 self.speaker.speak("Etwas ist schief gelaufen. Gehe zurück zum Core System.")
         else:
             self.current_path = path
@@ -59,6 +60,7 @@ class core:
         import time
 
         prev_selected = None
+        last_option = None
 
         while True:
             options = self.get_options(self.current_path)
@@ -74,7 +76,10 @@ class core:
                 print(option)
                 if option.endswith(".txt"):
                     option = option[:len(option)-4]
-                self.speaker.speak(str(option))
+
+                if option != last_option: # only say the word once
+                    self.speaker.speak(str(option))
+                    last_option = option
 
             prev_selected = selected
 

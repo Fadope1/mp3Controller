@@ -1,10 +1,13 @@
 class calc:
-    def __init__(self):
-        from speaker import speaker
-        self.speaker = speaker()
+    def __init__(self, joystick=None, speaker=None):
+        if joystick == None or speaker == None:
+            raise Exception("I/O missing.")
 
-        from piController import joystick
-        self.joystick = joystick()
+        # from speaker import speaker
+        self.speaker = speaker
+
+        # from piController import joystick
+        self.joystick = joystick
 
     @staticmethod
     def get_options():
@@ -19,4 +22,4 @@ class calc:
 
         while True:
             print("NOW IN CALC")
-            time.sleep(.5)
+            time.sleep(.3)
