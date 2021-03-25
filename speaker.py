@@ -12,6 +12,13 @@ class speaker:
         with open(file) as f:
             content = f.read()
 
+            # cant speak *, / directly...
+            content.replace("=", "geteilt durch.")
+            content.replace("*", "mal.")
+            content.replace("/", "geteilt durch.")
+            content.replace("+", "plus.")
+            content.replace("-", "minux.")
+
             self.speak(content)
 
     def speak(self, txt):
