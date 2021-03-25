@@ -1,0 +1,4 @@
+Der Betriebsabrechnungsbogen (BAB) ist abrechnungstechnisches Hilfsmittel für die Verteilung der Gemeinkosten auf die
+einzelnen Kostenstellen. Verteilung der Gemeinkosten erfolgt: direkt durch zurechenbare Belege
+(Kostenstelleneinzelkosten) oder indirekt über Verteilungsschlüssel (Kostenstellengemeinkosten).
+

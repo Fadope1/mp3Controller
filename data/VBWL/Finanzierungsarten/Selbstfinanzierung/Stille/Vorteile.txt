@@ -1,0 +1,3 @@
+- Steuerverschiebung.
+- Gewinn vor Konkurrenz verborgen.
+- Keine Zins- und Tilgungszahlungen.

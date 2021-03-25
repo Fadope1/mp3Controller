@@ -1,0 +1,1 @@
+selbskosten (SK) = Herstellkosten (HK) + Verwaltungskosten (VwGK) + Vertriebsgemeinkosten (VtGK) + Sondereinzelkosten des Betriebs (SEdV) 

@@ -1,0 +1,1 @@
+Zielverkaufspreis (ZVP) = Barverkaufspreis (BVP) + Vertreterprovision (VP) + Kundenskonto (KS) 

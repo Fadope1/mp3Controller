@@ -1,0 +1,2 @@
+Es handelt sich um eine elastische Nachfrage, wenn el_dir grösser als 1 ist (Preis hat einen starken einfluss auf die Nachfrage).
+Es handelt sich um eine unelastische Nachfrage, wenn el_dir kleiner als 1 ist (Preis hat einen schwachen einfluss auf die Nachfrage).

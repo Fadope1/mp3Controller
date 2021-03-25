@@ -19,7 +19,7 @@ class core:
         from piController import joystick
         self.joystick = joystick()
 
-        self.base_path = os.path.abspath("./data")
+        self.base_path = os.path.abspath("./Desktop/mp3Controller/data")
 
         self.current_path = self.base_path
 

@@ -1,0 +1,5 @@
+El_indirekt = Prozentuelle Nachfrageänderung für Gut A / prozentuelle Preiänderung von Gut B.
+
+oder.
+
+el_ind = (delta x von a * P von b) / (delta x von B * P von A)

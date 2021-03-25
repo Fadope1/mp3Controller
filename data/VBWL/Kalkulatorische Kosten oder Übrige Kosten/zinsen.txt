@@ -1,0 +1,1 @@
+kalkulatorische zinsen = ((anschaffungskosten + restwert) / 2) * zinssatz/100 

@@ -1,0 +1,3 @@
+Wenn die elastizität grösser als 1 ist, handelt es sich um substitionsgüter, oder auch positive kreuz preis elastizität.
+Wenn die elastizität kleiner als 1 ist, handelt es sich um komplimentärgüter, oder auch negative kreuz preis elastizität.
+Bei ungefähr 0 handelt es sich um güter mit keinem offensichtlichem zusammenhang.

@@ -1,0 +1,1 @@
+db-Satz = (db * 100) / (Nettoverkaufserlöse/stück oder zeitraum)

@@ -1,0 +1,2 @@
+Deckungsbeitrag = Nettoverkaufs erlöse − variable Kosten
+ 

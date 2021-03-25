@@ -1,0 +1,1 @@
+Barverkaufspreis = selbskosten + gewinn

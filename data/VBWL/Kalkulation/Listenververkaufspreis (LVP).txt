@@ -1,0 +1,1 @@
+Listenverkaufspreis (LVP) = Zielverkaufspreis (ZVP) + Kundenrabatt (KR)
