@@ -1,4 +1,0 @@
-- Zins- und Tilgungszahlungen auch in Phasen ohne Gewinn.
-- Befristete Kapitalüberlassung
-- Offenlegung persönlicher und wirtschaftlicher Verhältnisse.
-- Beschränkter Einsatz.

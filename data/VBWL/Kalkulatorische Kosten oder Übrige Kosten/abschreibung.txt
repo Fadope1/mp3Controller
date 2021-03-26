@@ -1,1 +1,0 @@
-kalkulatorische abschreiben = (anschaffungskosten - restwert) / nutzungsdauer

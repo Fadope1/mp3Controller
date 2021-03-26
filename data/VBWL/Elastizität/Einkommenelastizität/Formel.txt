@@ -1,5 +1,0 @@
-Einkommenelastizität = Mengenänderung in % / Einkommensänderung in %.
-
-Oder.
-
-Einkommenelastizität = delta von x in % / delta von E in %.

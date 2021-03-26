@@ -1,1 +1,0 @@
-Herstellkosten = Materialeinzelkosten (MEK) + Materialgemeinkosten (MGK) + Fertigungseinzelkosten (FEK) + Fertigungsgemeinkosten (FGK) + Sondereinzelkosten der Fertigung (SEdF)

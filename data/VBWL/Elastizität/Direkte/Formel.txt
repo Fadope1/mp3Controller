@@ -1,5 +1,0 @@
-El_direkt = Absoluter Wert von. Prozentualle Nachfrageänderung / Prozentualle Preisänderung.
- 
-Oder.
- 
-El_dir = Absoluter Wert von. (delta von x * P) / (delta von P * x)

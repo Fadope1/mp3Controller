@@ -1,4 +1,0 @@
-Eigenkapital besteht aus gezeichnetem kapital, also nennwert * aktien.
-Es besteht ausserdem aus den kapitalrücklagen, also ((kurswert - nennwert) * aktien).
-Des weiteren aus gewinnrücklagen, darunter zählen gesetzliche rücklagen rücklagen für eigene anteile satzungsmäßige rücklagen und andere gewinnrücklagen.
-Außerdem beseht das eigenkapital aus gewinnvortag oder verlustvortag und jahresüberschuss oder jahresfehlbetrag.
