@@ -2,12 +2,8 @@ import traceback
 import sys
 import os
 
-# TODO:
 """
-- solder the pi0
 - loop as decorator?
-- logging system
-- system loop for system interaction, e.g. shutdown, volume up etc.
 """
 
 # the core system
@@ -31,9 +27,9 @@ class core:
     def main(self, selected):
         path = os.path.abspath(f"{self.current_path}/{selected}")
 
-        if selected.endswith(".txt"):
+        if selected.endswith(".txt"): # speak text content
             self.speaker.speak_file(path)
-        elif selected.endswith(".py"):
+        elif selected.endswith(".py"): # run python program as subloop
             try:
                 import importlib.util
 
@@ -68,14 +64,18 @@ class core:
 
             print(options)
 
-            if selected == None and prev_selected != None:
-                option = options[prev_selected]
-                self.main(option)
-            elif selected != None:
+            if selected == None and prev_selected != None: # selected something
+                option = options[prev_selected] # selected option
+                self.main(option) # open selected option
+            elif selected != None: # currently selecting
                 option = options[selected]
                 print(option)
-                if option.endswith(".txt"):
-                    option = option[:len(option)-4]
+
+                # filter the selected option:
+                if option == "..": # If "go back" is selected "cd .."
+                    option = "zurück." # speak "go back" ("zurück") instead of ".."
+                elif option.endswith(".txt"):
+                    option = option[:len(option)-4] # cut of the ".txt"
 
                 if option != last_option: # only say the word once
                     self.speaker.speak(str(option))
