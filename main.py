@@ -47,7 +47,7 @@ class core:
                 instance.start_sub_loop()
             except Exception as e:
                 print(f"Something went wrong. Fallback to core. Exc: {e}")
-                traceback.print_exception(*sys.exc_info()) # maybe save the exc to a file?
+                traceback.print_exception(*sys.exc_info()) # maybe save the exc. to a file?
                 self.speaker.speak("Etwas ist schief gelaufen. Gehe zurück zum Core System.")
         else:
             self.current_path = path

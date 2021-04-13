@@ -12,7 +12,7 @@ class speaker:
         # Needed for mathmatical operators like +, - etc.
         # e-speak can't speak those
 
-        to_parse_chars = {"=": "geteilt durch.", "*": "mal.", "/": "geteilt.", +": "plus.", "-": "minus."}
+        to_parse_chars = {"=": "geteilt durch.", "*": "mal.", "/": "geteilt.", "+": "plus.", "-": "minus."}
 
         # future proof :)
         for operator, text in to_parse_chars.items():
