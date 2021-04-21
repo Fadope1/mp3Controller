@@ -6,6 +6,20 @@ import os
 - loop as decorator?
 """
 
+# I for some reason have to do this to auto connect to my headset on startup
+MAC_ADDR = "FC:58:FA:4F:D3:D0:" # mac addr of my bluetooth headset
+
+def connect():
+    os.system("pulseaudio --start -D")
+    os.system(f"connect {MAC_ADDR}")
+
+connect() # start pulseaudio and connect to bluetooth device
+os.system("pacmd set-default-sink 1") # set default output to the second channel, in this case first one was some other output
+os.system("pulseaudio -k") # kill pulseaudio
+connect() # re-establish connection
+
+# There is 100% a better way of connection to a bluetooth device automaticly, but this will do for now
+
 # the core system
 class core:
     def __init__(self):
@@ -15,7 +29,7 @@ class core:
         from piController import joystick
         self.joystick = joystick()
 
-        self.base_path = os.path.abspath("./Desktop/mp3Controller/data")
+        self.base_path = os.path.abspath("./Desktop/mp3Controller/data") # TODO: replace this with not absolute path
 
         self.current_path = self.base_path
 
@@ -29,7 +43,7 @@ class core:
 
         if selected.endswith(".txt"): # speak text content
             self.speaker.speak_file(path)
-        elif selected.endswith(".py"): # run python program as subloop
+        elif selected.endswith(".py"): # run python program (as subloop if available)
             try:
                 import importlib.util
 
@@ -43,6 +57,7 @@ class core:
                 sys.path.append(self.current_path)
                 file_cls = pyclbr.readmodule(pyfile.__name__).keys()
                 cls = list(file_cls)[0]
+
                 instance = getattr(pyfile, cls)(joystick=self.joystick, speaker=self.speaker)
                 instance.start_sub_loop()
             except Exception as e:
