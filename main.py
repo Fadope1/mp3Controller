@@ -4,6 +4,7 @@ import os
 
 """
 - loop as decorator?
+- button to go back to ~/Documents/data
 """
 
 # I for some reason have to do this to auto connect to my headset on startup
